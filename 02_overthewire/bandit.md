@@ -181,6 +181,20 @@ ssh bandit.labs.overthewire.org -p 2220 -l bandit11
 ```
 
 # Levelx
+The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
+
+```
+https://gchq.github.io/CyberChef/#recipe=ROT13(true,true,13)&input=R3VyIGNuZmZqYmVxIHZmIDVHcjhMNHFldFBFc1BrOGh0cWpoUks4WFNQNngyUkhoCg
+
+The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+
+```
+
+```Bash
+ssh bandit.labs.overthewire.org -p 2220 -l bandit12
+```
+
+# Levelx
 
 
 ```Bash
