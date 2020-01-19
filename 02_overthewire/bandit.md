@@ -180,7 +180,7 @@ The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
 ssh bandit.labs.overthewire.org -p 2220 -l bandit11
 ```
 
-# Levelx
+# Level12
 The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
 
 ```
@@ -192,6 +192,83 @@ The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
 
 ```Bash
 ssh bandit.labs.overthewire.org -p 2220 -l bandit12
+```
+# Level13
+The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)
+
+```Bash
+bandit12@bandit:/tmp/shunaroo$ xxd -r data.txt > revesehex
+bandit12@bandit:/tmp/shunaroo$ ls
+data.txt  revesehex
+bandit12@bandit:/tmp/shunaroo$ file revesehex 
+revesehex: gzip compressed data, was "data2.bin", last modified: Tue Oct 16 12:00:23 2018, max compression, from Unix
+bandit12@bandit:/tmp/shunaroo$ mv revesehex revesehex.gz
+bandit12@bandit:/tmp/shunaroo$ gunzip revesehex.gz 
+bandit12@bandit:/tmp/shunaroo$ ls
+data.txt  revesehex
+bandit12@bandit:/tmp/shunaroo$ file revesehex 
+revesehex: bzip2 compressed data, block size = 900k
+bandit12@bandit:/tmp/shunaroo$ bzip2 revesehex 
+bandit12@bandit:/tmp/shunaroo$ ls
+data.txt  revesehex.bz2
+bandit12@bandit:/tmp/shunaroo$ file revesehex.bz2 
+revesehex.bz2: bzip2 compressed data, block size = 900k
+bandit12@bandit:/tmp/shunaroo$ bzip2 -d revesehex.bz2 
+bandit12@bandit:/tmp/shunaroo$ ls
+data.txt  revesehex
+bandit12@bandit:/tmp/shunaroo$ file revesehex 
+revesehex: bzip2 compressed data, block size = 900k
+bandit12@bandit:/tmp/shunaroo$ bzip2 -d revesehex
+bzip2: Can't guess original name for revesehex -- using revesehex.out
+bandit12@bandit:/tmp/shunaroo$ ks
+-bash: ks: command not found
+bandit12@bandit:/tmp/shunaroo$ ls
+data.txt  revesehex.out
+bandit12@bandit:/tmp/shunaroo$ file revesehex.out 
+revesehex.out: gzip compressed data, was "data4.bin", last modified: Tue Oct 16 12:00:23 2018, max compression, from Unix
+bandit12@bandit:/tmp/shunaroo$ mv revesehex.out revesehex.gz
+bandit12@bandit:/tmp/shunaroo$ gunzip revesehex.gz 
+bandit12@bandit:/tmp/shunaroo$ ls
+data.txt  revesehex
+bandit12@bandit:/tmp/shunaroo$ file revesehex 
+revesehex: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/shunaroo$ tar xvf revesehex
+data5.bin
+bandit12@bandit:/tmp/shunaroo$ file data5.bin 
+data5.bin: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/shunaroo$ tar xvf data5.bin
+data6.bin
+bandit12@bandit:/tmp/shunaroo$ file data6.bin 
+data6.bin: bzip2 compressed data, block size = 900k
+bandit12@bandit:/tmp/shunaroo$ bzip2 -d data6.bin
+bzip2: Can't guess original name for data6.bin -- using data6.bin.out
+bandit12@bandit:/tmp/shunaroo$ ls
+data5.bin  data6.bin.out  data.txt  revesehex
+bandit12@bandit:/tmp/shunaroo$ file data6.bin.out 
+data6.bin.out: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/shunaroo$ tar xvf data6.bin.out
+data8.bin
+bandit12@bandit:/tmp/shunaroo$ file data8.bin 
+data8.bin: gzip compressed data, was "data9.bin", last modified: Tue Oct 16 12:00:23 2018, max compression, from Unix
+bandit12@bandit:/tmp/shunaroo$ gunzip data8.bin
+gzip: data8.bin: unknown suffix -- ignored
+bandit12@bandit:/tmp/shunaroo$ ls
+data5.bin  data6.bin.out  data8.bin  data.txt  revesehex
+bandit12@bandit:/tmp/shunaroo$ file data8.bin 
+data8.bin: gzip compressed data, was "data9.bin", last modified: Tue Oct 16 12:00:23 2018, max compression, from Unix
+bandit12@bandit:/tmp/shunaroo$ ls
+data5.bin  data6.bin.out  data8.bin  data.txt  revesehex
+bandit12@bandit:/tmp/shunaroo$ mv data8.bin data.gz
+bandit12@bandit:/tmp/shunaroo$ gunzip data.gz
+bandit12@bandit:/tmp/shunaroo$ ls
+data  data5.bin  data6.bin.out  data.txt  revesehex
+bandit12@bandit:/tmp/shunaroo$ file data
+data: ASCII text
+bandit12@bandit:/tmp/shunaroo$ more data
+The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+```
+```Bash
+ssh bandit.labs.overthewire.org -p 2220 -l bandit13
 ```
 
 # Levelx
