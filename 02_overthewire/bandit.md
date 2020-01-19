@@ -77,7 +77,36 @@ bandit4@bandit:~$
 ssh bandit.labs.overthewire.org -p 2220 -l bandit5
 ```
 
+# Level6
+The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
 
+- human-readable
+- 1033 bytes in size
+- not executable
+
+```Bash
+bandit5@bandit:~$ find -type f -size 1033c ! -executable 
+./inhere/maybehere07/.file2
+bandit5@bandit:~$ more ./inhere/maybehere07/.file2
+DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+```
+
+```Bash
+ssh bandit.labs.overthewire.org -p 2220 -l banditx
+```
+
+
+# Levelx
+
+
+```Bash
+
+
+```
+
+```Bash
+ssh bandit.labs.overthewire.org -p 2220 -l banditx
+```
 
 
 
