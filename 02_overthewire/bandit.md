@@ -28,3 +28,14 @@ CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
 ```Bash
 ssh bandit.labs.overthewire.org -p 2220 -l bandit2
 ```
+
+# Level3
+
+```Bash
+bandit2@bandit:~$ more spaces\ in\ this\ filename 
+UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+```
+```Bash
+ssh bandit.labs.overthewire.org -p 2220 -l bandit2
+```
+
