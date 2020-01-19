@@ -30,12 +30,42 @@ ssh bandit.labs.overthewire.org -p 2220 -l bandit2
 ```
 
 # Level3
+The password for the next level is stored in a file called spaces in this filename located in the home directory
 
 ```Bash
 bandit2@bandit:~$ more spaces\ in\ this\ filename 
 UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
 ```
 ```Bash
-ssh bandit.labs.overthewire.org -p 2220 -l bandit2
+ssh bandit.labs.overthewire.org -p 2220 -l bandit3
 ```
+
+
+# Level4
+The password for the next level is stored in a hidden file in the inhere directory.
+```Bash
+bandit3@bandit:~$ ls -a inhere/
+.  ..  .hidden
+bandit3@bandit:~$ more inhere/.hidden 
+pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+```
+```Bash
+ssh bandit.labs.overthewire.org -p 2220 -l bandit4
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
