@@ -166,6 +166,19 @@ iv8!=
 ssh bandit.labs.overthewire.org -p 2220 -l bandit10
 ```
 
+# Level11
+The password for the next level is stored in the file data.txt, which contains base64 encoded data
+
+
+```Bash
+bandit10@bandit:~$ more data.txt | base64 -d
+The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+
+```
+
+```Bash
+ssh bandit.labs.overthewire.org -p 2220 -l bandit11
+```
 
 # Levelx
 
