@@ -281,6 +281,19 @@ bandit14@bandit:~$ more /etc/bandit_pass/bandit14
 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
 ```
 
+# Level15
+The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.
+
+```Bash
+bandit14@bandit:~$ more /etc/bandit_pass/bandit14| nc localhost 30000
+Correct!
+BfMYroe26WYalil77FoDi9qh59eK5xNr
+```
+
+```Bash
+ssh bandit.labs.overthewire.org -p 2220 -l bandit15
+```
+
 # Levelx
 
 
