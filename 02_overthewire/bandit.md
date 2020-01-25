@@ -415,17 +415,31 @@ IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
 ssh bandit.labs.overthewire.org -p 2220 -l bandit19
 ```
 
+# Level20
+To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary.
+
+```Bash
+bandit19@bandit:~$ ls
+bandit20-do
+bandit19@bandit:~$ ./bandit20-do 
+Run a command as another user.
+  Example: ./bandit20-do id
+bandit19@bandit:~$ ./bandit20-do more /etc/bandit_pass/bandit20 
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+```
+
+```Bash
+ssh bandit.labs.overthewire.org -p 2220 -l bandit20
+```
+
+
 
 
 # Levelx
 
 
 ```Bash
-[~]$ ssh bandit.labs.overthewire.org -p 2220 -l bandit18 "cat readme" 
-This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
 
-bandit18@bandit.labs.overthewire.org's password: 
-IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
 
 ```
 
