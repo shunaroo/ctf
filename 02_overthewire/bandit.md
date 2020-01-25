@@ -313,7 +313,7 @@ ssh bandit.labs.overthewire.org -p 2220 -l bandit16
 ```
 
 # Level17
-
+The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.
 
 ```Bash
 bandit16@bandit:~$ nmap -sT localhost -p 31000-32000
@@ -381,6 +381,25 @@ vim id_rsa
 chmod 400 id_rsa
 ssh bandit.labs.overthewire.org -p 2220 -l bandit17 -i ./id_rsa
 ```
+
+# Level18
+There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new
+
+```Bash
+bandit17@bandit:~$ ls
+passwords.new  passwords.old
+bandit17@bandit:~$ diff passwords.new passwords.old 
+42c42
+< kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+---
+> hlbSBPAWJmL6WFDb06gpTx1pPButblOA
+
+```
+
+```Bash
+ssh bandit.labs.overthewire.org -p 2220 -l bandit18
+```
+
 
 # Levelx
 
