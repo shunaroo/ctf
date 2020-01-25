@@ -400,12 +400,32 @@ bandit17@bandit:~$ diff passwords.new passwords.old
 ssh bandit.labs.overthewire.org -p 2220 -l bandit18
 ```
 
+# Level19
+
+
+```Bash
+[~]$ ssh bandit.labs.overthewire.org -p 2220 -l bandit18 "cat readme" 
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit18@bandit.labs.overthewire.org's password: 
+IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+```
+
+```Bash
+ssh bandit.labs.overthewire.org -p 2220 -l bandit19
+```
+
+
 
 # Levelx
 
 
 ```Bash
+[~]$ ssh bandit.labs.overthewire.org -p 2220 -l bandit18 "cat readme" 
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
 
+bandit18@bandit.labs.overthewire.org's password: 
+IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
 
 ```
 
