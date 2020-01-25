@@ -293,6 +293,25 @@ BfMYroe26WYalil77FoDi9qh59eK5xNr
 ```Bash
 ssh bandit.labs.overthewire.org -p 2220 -l bandit15
 ```
+# Level16
+The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL encryption.
+
+```Bash
+bandit15@bandit:~$ echo "BfMYroe26WYalil77FoDi9qh59eK5xNr"|openssl s_client -connect localhost:30001 -quiet
+depth=0 CN = localhost
+verify error:num=18:self signed certificate
+verify return:1
+depth=0 CN = localhost
+verify return:1
+Correct!
+cluFn7wTiGryunymYOu4RcffSxQluehd
+
+```
+
+```Bash
+ssh bandit.labs.overthewire.org -p 2220 -l bandit16
+```
+
 
 # Levelx
 
