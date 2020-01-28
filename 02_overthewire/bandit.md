@@ -493,7 +493,34 @@ Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
 ssh bandit.labs.overthewire.org -p 2220 -l bandit22
 ```
 
+# Level23
+A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
 
+```Bash
+bandit22@bandit:~$ ls /etc/cron.d/
+atop  cronjob_bandit22  cronjob_bandit23  cronjob_bandit24
+bandit22@bandit:~$ more /etc/cron.d/cronjob_bandit23 
+@reboot bandit23 /usr/bin/cronjob_bandit23.sh  &> /dev/null
+* * * * * bandit23 /usr/bin/cronjob_bandit23.sh  &> /dev/null
+bandit22@bandit:~$ more /usr/bin/cronjob_bandit23.sh 
+#!/bin/bash
+
+myname=$(whoami)
+mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+
+echo "Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget"
+
+cat /etc/bandit_pass/$myname > /tmp/$mytarget
+bandit22@bandit:~$ echo I am user bandit23 | md5sum | cut -d ' ' -f 1
+8ca319486bfbbc3663ea0fbe81326349
+bandit22@bandit:~$ more /tmp/8ca319486bfbbc3663ea0fbe81326349
+jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+
+```
+
+```Bash
+ssh bandit.labs.overthewire.org -p 2220 -l bandit23
+```
 
 # Levelx
 
