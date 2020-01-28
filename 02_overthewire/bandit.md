@@ -432,6 +432,41 @@ GbKksEFF4yrVs6il55v6gwY5aVje5f0j
 ssh bandit.labs.overthewire.org -p 2220 -l bandit20
 ```
 
+# Level21
+There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).
+
+## step1
+- open terminal1 and type like this
+
+```Bash
+bandit20@bandit:~$ nc -l -p 12345
+```
+
+## step2
+- open terminal2 and type like this
+
+```Bash
+bandit20@bandit:~$ ./suconnect 12345
+```
+
+## step3
+- type like this on the terminal1
+
+```Bash
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+```
+- then reply the password from terminal2 process like below
+
+```Bash
+bandit20@bandit:~$ nc -l -p 12345
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+
+```
+
+```Bash
+ssh bandit.labs.overthewire.org -p 2220 -l bandit21
+```
 
 
 
