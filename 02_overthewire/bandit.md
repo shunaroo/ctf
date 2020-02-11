@@ -640,6 +640,27 @@ bandit26@bandit:~$ more /etc/bandit_pass/bandit26
 
 ```
 
+# Level27
+Good job getting a shell! Now hurry and grab the password for bandit27!
+
+```Bash
+bandit26@bandit:~$ ls
+bandit27-do  text.txt
+bandit26@bandit:~$ ./bandit27-do 
+Run a command as another user.
+  Example: ./bandit27-do id
+bandit26@bandit:~$ ./bandit27-do more /etc/bandit_pass/bandit27
+3ba3118a22e93127a4ed485be72ef5ea
+bandit26@bandit:~$ 
+
+
+```
+
+```Bash
+ssh bandit.labs.overthewire.org -p 2220 -l bandit27
+```
+
+
 # Levelx
 
 
@@ -650,7 +671,20 @@ bandit26@bandit:~$ more /etc/bandit_pass/bandit26
 
 ```Bash
 ssh bandit.labs.overthewire.org -p 2220 -l banditx
+
+# Level
+
+
+```Bash
+
+
 ```
+
+```Bash
+ssh bandit.labs.overthewire.org -p 2220 -l banditx
+``````
+
+
 
 
 
