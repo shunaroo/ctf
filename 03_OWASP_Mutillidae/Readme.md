@@ -25,3 +25,8 @@
   - level5
     - スキル不足で突破できない
 
+
+  - 下記セクションは原理的に同じっぽいの割愛
+    - SQLi Bypass Authentication
+    - Insert Injection
+    - Blind SQL via timing (sleepコマンドを使わせたい?)
