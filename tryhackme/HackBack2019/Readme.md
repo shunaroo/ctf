@@ -560,3 +560,123 @@ flag5.txt  snap
 2a7074e491fcacc7eeba97808dc5e2ec
 #
 ```
+# [Task 5] [Scripting] [Easy] Base64
+
+```
+50 time base64 decode
+root@kali:~# cat b64.txt |base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d|base64 -d
+HackBack2019=root@kali:~#
+```
+# [Task 6] [Reverse Engineering] [Easy] Secret Encryption
+## ghidra
+
+```
+                             **************************************************************
+                             *                          FUNCTION                          *
+                             **************************************************************
+                             undefined main()
+             undefined         AL:1           <RETURN>
+             undefined8        Stack[-0x10]:8 local_10                                XREF[2]:     001007fb(W), 
+                                                                                                   0010090b(R)  
+             undefined1        Stack[-0x1a]:1 local_1a                                XREF[1]:     00100814(*)  
+             undefined4        Stack[-0x20]:4 local_20                                XREF[2]:     001008cd(W), 
+                                                                                                   001008d0(R)  
+             undefined4        Stack[-0x24]:4 local_24                                XREF[6]:     00100801(W), 
+                                                                                                   0010083d(R), 
+                                                                                                   00100843(R), 
+                                                                                                   001008a4(R), 
+                                                                                                   001008ec(RW), 
+                                                                                                   001008f0(R)  
+             undefined1        Stack[-0x25]:1 local_25                                XREF[11]:    00100867(W), 
+                                                                                                   0010086d(W), 
+                                                                                                   00100873(W), 
+                                                                                                   00100879(W), 
+                                                                                                   0010087f(W), 
+                                                                                                   00100885(W), 
+                                                                                                   0010088b(W), 
+                                                                                                   00100891(W), 
+                                                                                                   00100897(W), 
+                                                                                                   0010089d(W), 
+                                                                                                   001008bf(R)  
+             undefined1        Stack[-0x26]:1 local_26                                XREF[2]:     001008b8(W), 
+                                                                                                   001008bb(R)  
+                             main                                            XREF[3]:     Entry Point(*), 
+                                                                                          _start:0010066d(*), 00100a88  
+        001007ea 55              PUSH       RBP
+        001007eb 48 89 e5        MOV        RBP,RSP
+        001007ee 48 83 ec 20     SUB        RSP,0x20
+        001007f2 64 48 8b        MOV        RAX,qword ptr FS:[0x28]
+                 04 25 28 
+                 00 00 00
+        001007fb 48 89 45 f8     MOV        qword ptr [RBP + local_10],RAX
+        001007ff 31 c0           XOR        EAX,EAX
+        00100801 c7 45 e4        MOV        dword ptr [RBP + local_24],0x0
+                 00 00 00 00
+        00100808 48 8d 3d        LEA        RDI,[s_Enter_The_Correct_Password_001009b8]      = "Enter The Correct Password"
+                 a9 01 00 00
+        0010080f e8 ec fd        CALL       puts                                             int puts(char * __s)
+                 ff ff
+        00100814 48 8d 45 ee     LEA        RAX=>local_1a,[RBP + -0x12]
+        00100818 48 89 c6        MOV        RSI,RAX
+        0010081b 48 8d 3d        LEA        RDI,[DAT_001009d3]                               = 25h    %
+                 b1 01 00 00
+        00100822 b8 00 00        MOV        EAX,0x0
+                 00 00
+        00100827 e8 f4 fd        CALL       __isoc99_scanf                                   undefined __isoc99_scanf()
+                 ff ff
+        0010082c e9 bf 00        JMP        LAB_001008f0
+                 00 00
+                             LAB_00100831                                    XREF[1]:     001008f4(j)  
+        00100831 48 8d 3d        LEA        RDI,[s_in_while_loop_001009d6]                   = "in while loop"
+                 9e 01 00 00
+        00100838 e8 c3 fd        CALL       puts                                             int puts(char * __s)
+                 ff ff
+        0010083d 83 7d e4 09     CMP        dword ptr [RBP + local_24],0x9
+        00100841 77 60           JA         LAB_001008a3
+        00100843 8b 45 e4        MOV        EAX,dword ptr [RBP + local_24]
+        00100846 48 8d 14        LEA        RDX,[RAX*0x4]
+                 85 00 00 
+                 00 00
+        0010084e 48 8d 05        LEA        RAX,[switchD_00100865::switchdataD_00100a2c]     = FFFFFE3Bh
+                 d7 01 00 00
+        00100855 8b 04 02        MOV        EAX=>switchD_00100865::switchdataD_00100a2c,dw   = FFFFFE3Bh
+        00100858 48 63 d0        MOVSXD     RDX,EAX
+        0010085b 48 8d 05        LEA        RAX,[switchD_00100865::switchdataD_00100a2c]     = FFFFFE3Bh
+                 ca 01 00 00
+        00100862 48 01 d0        ADD        RAX,RDX
+                             switchD_00100865::switchD
+        00100865 ff e0           JMP        RAX
+                             switchD_00100865::caseD_0                       XREF[1]:     00100865(j)  
+        00100867 c6 45 e3 54     MOV        byte ptr [RBP + local_25],0x54
+        0010086b eb 37           JMP        switchD_00100865::caseD_a
+                             switchD_00100865::caseD_1                       XREF[1]:     00100865(j)  
+        0010086d c6 45 e3 48     MOV        byte ptr [RBP + local_25],0x48
+        00100871 eb 31           JMP        switchD_00100865::caseD_a
+                             switchD_00100865::caseD_2                       XREF[1]:     00100865(j)  
+        00100873 c6 45 e3 4d     MOV        byte ptr [RBP + local_25],0x4d
+        00100877 eb 2b           JMP        switchD_00100865::caseD_a
+                             switchD_00100865::caseD_3                       XREF[1]:     00100865(j)  
+        00100879 c6 45 e3 52     MOV        byte ptr [RBP + local_25],0x52
+        0010087d eb 25           JMP        switchD_00100865::caseD_a
+                             switchD_00100865::caseD_4                       XREF[1]:     00100865(j)  
+        0010087f c6 45 e3 41     MOV        byte ptr [RBP + local_25],0x41
+        00100883 eb 1f           JMP        switchD_00100865::caseD_a
+                             switchD_00100865::caseD_5                       XREF[1]:     00100865(j)  
+        00100885 c6 45 e3 4e     MOV        byte ptr [RBP + local_25],0x4e
+        00100889 eb 19           JMP        switchD_00100865::caseD_a
+                             switchD_00100865::caseD_6                       XREF[1]:     00100865(j)  
+        0010088b c6 45 e3 44     MOV        byte ptr [RBP + local_25],0x44
+        0010088f eb 13           JMP        switchD_00100865::caseD_a
+                             switchD_00100865::caseD_7                       XREF[1]:     00100865(j)  
+        00100891 c6 45 e3 45     MOV        byte ptr [RBP + local_25],0x45
+        00100895 eb 0d           JMP        switchD_00100865::caseD_a
+                             switchD_00100865::caseD_8                       XREF[1]:     00100865(j)  
+        00100897 c6 45 e3 4e     MOV        byte ptr [RBP + local_25],0x4e
+        0010089b eb 07           JMP        switchD_00100865::caseD_a
+                             switchD_00100865::caseD_9                       XREF[1]:     00100865(j)  
+        0010089d c6 45 e3 43     MOV        byte ptr [RBP + local_25],0x43
+
+http://web-apps.nbookmark.com/ascii-converter/
+54 48 4d 52 41 4e 44 45 4e 43
+THMRANDENC
+```
