@@ -167,3 +167,12 @@ Website: THM{L0L_WH0_D15}
 <meta content="http://10.10.246.78/archive/a-cheers-to-our-it-department/" property="og:url" />
 <meta content="THM{AN0TH3R_M3TA}" property="og:description" />
 ```
+# RDP
+```
+anthem@SG
+
+hidden
+change priviledge everyone
+
+
+```
