@@ -1,9 +1,3 @@
-```
-targetIP=10.10.37.72
-localIP=10.10.67.68
-
-```
-
 # gobuster 
 ```
  root@kali:~# gobuster dir -u http://$targetIP -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x html,txt,php,xhml
