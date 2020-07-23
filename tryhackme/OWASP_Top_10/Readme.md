@@ -50,18 +50,18 @@ sshd:x:110:65534::/run/sshd:/usr/sbin/nologin
 - id
 - whoami
 ```
-www-data
+www-xxxxxx
 ```
 
 ## 4
 ```
-www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/xxxxxx
 ```
 
 # 5
 - cat /etc/os-release
 ```
-NAME="Ubuntu" VERSION="18.04.4 LTS (Bionic Beaver)" ID=ubuntu ID_LIKE=debian PRETTY_NAME="Ubuntu 18.04.4 LTS" VERSION_ID="18.04" HOME_URL="https://www.ubuntu.com/" SUPPORT_URL="https://help.ubuntu.com/" BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/" PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy" VERSION_CODENAME=bionic UBUNTU_CODENAME=bionic 
+NAME="Ubuntu" VERSION="xxxxx LTS (Bionic Beaver)" ID=ubuntu ID_LIKE=debian PRETTY_NAME="Ubuntu 18.04.4 LTS" VERSION_ID="18.04" HOME_URL="https://www.ubuntu.com/" SUPPORT_URL="https://help.ubuntu.com/" BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/" PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy" VERSION_CODENAME=bionic UBUNTU_CODENAME=bionic 
 ```
 
 
@@ -76,7 +76,7 @@ connect to [10.10.108.72] from (UNKNOWN) [10.10.179.185] 60408
 /bin/sh: 0: can't access tty; job control turned off
 $ ls
 css
-drpepper.txt
+drxxxxxxx.txt
 evilshell.php
 index.php
 js
@@ -115,7 +115,7 @@ fi
 
 printf "Welcome to %s (%s %s %s)\n" "$DISTRIB_DESCRIPTION" "$(uname -o)" "$(uname -r)" "$(uname -m)"
 
-DR PEPPER MAKES THE WORLD TASTE BETTER!
+xxxxxxxxx MAKES THE WORLD TASTE BETTER!
 $
 ```
 
@@ -222,7 +222,6 @@ sshd:x:109:65534::/run/sshd:/usr/sbin/nologin
 pollinate:x:110:1::/var/cache/pollinate:/bin/false
 falcon:x:1000:1000:falcon,,,:/home/falcon:/bin/bash
 
-    
 ```
 
 
