@@ -349,6 +349,6 @@ C:\Users\Administrator\Desktop>dir
                2 Dir(s)  30,399,991,808 bytes free
 
 C:\Users\Administrator\Desktop>type root.txt.txt
-7958b569565d7bd88d10c6f22d1c4063
+XXXXXXXXXXXXXXXXXXXXXX
 C:\Users\Administrator\Desktop>
 ```
