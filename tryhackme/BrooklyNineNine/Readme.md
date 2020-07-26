@@ -88,7 +88,7 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2020-07-26 13:32:
 [VERBOSE] Resolving addresses ... [VERBOSE] resolving done
 [INFO] Testing if password authentication is supported by ssh://jake@10.10.49.123:22
 [INFO] Successful, password authentication is supported by ssh://10.10.49.123:22
-[22][ssh] host: 10.10.49.123   login: jake   password: 987654321
+[22][ssh] host: 10.10.49.123   login: jake   password: <pass>
 [STATUS] attack finished for 10.10.49.123 (waiting for children to complete tests)
 ^C
 ```
