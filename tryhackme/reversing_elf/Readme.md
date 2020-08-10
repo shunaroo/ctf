@@ -227,3 +227,176 @@ orax = 0xffffffffffffffff
 0x7ffefbac54c0  4005 4000 0000 0000 f054 acfb fe7f 0000  @.@......T......
 [0x004006d2]>
 ```
+
+# crackme5
+```
+[0x7f4470e39090]> db 0x0040082c
+[0x7f4470e39090]> dc
+Enter your input:
+test
+hit breakpoint at: 40082c
+[0x0040082c]> pdf @main
+/ (fcn) main 251
+|   int main (int argc, char **argv, char **envp);
+|           ; var int32_t var_70h @ rbp-0x70
+|           ; var int32_t var_64h @ rbp-0x64
+|           ; var int32_t var_54h @ rbp-0x54
+|           ; var int32_t var_50h @ rbp-0x50
+|           ; var int32_t var_30h @ rbp-0x30
+|           ; var int32_t var_2fh @ rbp-0x2f
+|           ; var int32_t var_2eh @ rbp-0x2e
+|           ; var int32_t var_2dh @ rbp-0x2d
+|           ; var int32_t var_2ch @ rbp-0x2c
+|           ; var int32_t var_2bh @ rbp-0x2b
+|           ; var int32_t var_2ah @ rbp-0x2a
+|           ; var int32_t var_29h @ rbp-0x29
+|           ; var int32_t var_28h @ rbp-0x28
+|           ; var int32_t var_27h @ rbp-0x27
+|           ; var int32_t var_26h @ rbp-0x26
+|           ; var int32_t var_25h @ rbp-0x25
+|           ; var int32_t var_24h @ rbp-0x24
+|           ; var int32_t var_23h @ rbp-0x23
+|           ; var int32_t var_22h @ rbp-0x22
+|           ; var int32_t var_21h @ rbp-0x21
+|           ; var int32_t var_20h @ rbp-0x20
+|           ; var int32_t var_1fh @ rbp-0x1f
+|           ; var int32_t var_1eh @ rbp-0x1e
+|           ; var int32_t var_1dh @ rbp-0x1d
+|           ; var int32_t var_1ch @ rbp-0x1c
+|           ; var int32_t var_1bh @ rbp-0x1b
+|           ; var int32_t var_1ah @ rbp-0x1a
+|           ; var int32_t var_19h @ rbp-0x19
+|           ; var int32_t var_18h @ rbp-0x18
+|           ; var int32_t var_17h @ rbp-0x17
+|           ; var int32_t var_16h @ rbp-0x16
+|           ; var int32_t var_15h @ rbp-0x15
+|           ; var int32_t var_8h @ rbp-0x8
+|           ; arg int argc @ rdi
+|           ; arg char **argv @ rsi
+|           ; DATA XREF from entry0 @ 0x4005fd
+|           ; CALL XREF from sym.check @ 0x4008c3
+|           0x00400773      55             push rbp
+|           0x00400774      4889e5         mov rbp, rsp
+|           0x00400777      4883ec70       sub rsp, 0x70
+|           0x0040077b      897d9c         mov dword [var_64h], edi    ; argc
+|           0x0040077e      48897590       mov qword [var_70h], rsi    ; argv
+|           0x00400782      64488b042528.  mov rax, qword fs:[0x28]
+|           0x0040078b      488945f8       mov qword [var_8h], rax
+|           0x0040078f      31c0           xor eax, eax
+|           0x00400791      c645d04f       mov byte [var_30h], 0x4f    ; 'O' ; 79
+|           0x00400795      c645d166       mov byte [var_2fh], 0x66    ; 'f' ; 102
+|           0x00400799      c645d264       mov byte [var_2eh], 0x64    ; 'd' ; 100
+|           0x0040079d      c645d36c       mov byte [var_2dh], 0x6c    ; 'l' ; 108
+|           0x004007a1      c645d444       mov byte [var_2ch], 0x44    ; 'D' ; 68
+|           0x004007a5      c645d553       mov byte [var_2bh], 0x53    ; 'S' ; 83
+|           0x004007a9      c645d641       mov byte [var_2ah], 0x41    ; 'A' ; 65
+|           0x004007ad      c645d77c       mov byte [var_29h], 0x7c    ; '|' ; 124
+|           0x004007b1      c645d833       mov byte [var_28h], 0x33    ; '3' ; 51
+|           0x004007b5      c645d974       mov byte [var_27h], 0x74    ; 't' ; 116
+|           0x004007b9      c645da58       mov byte [var_26h], 0x58    ; 'X' ; 88
+|           0x004007bd      c645db62       mov byte [var_25h], 0x62    ; 'b' ; 98
+|           0x004007c1      c645dc33       mov byte [var_24h], 0x33    ; '3' ; 51
+|           0x004007c5      c645dd32       mov byte [var_23h], 0x32    ; '2' ; 50
+|           0x004007c9      c645de7e       mov byte [var_22h], 0x7e    ; '~' ; 126
+|           0x004007cd      c645df58       mov byte [var_21h], 0x58    ; 'X' ; 88
+|           0x004007d1      c645e033       mov byte [var_20h], 0x33    ; '3' ; 51
+|           0x004007d5      c645e174       mov byte [var_1fh], 0x74    ; 't' ; 116
+|           0x004007d9      c645e258       mov byte [var_1eh], 0x58    ; 'X' ; 88
+|           0x004007dd      c645e340       mov byte [var_1dh], 0x40    ; '@' ; 64
+|           0x004007e1      c645e473       mov byte [var_1ch], 0x73    ; 's' ; 115
+|           0x004007e5      c645e558       mov byte [var_1bh], 0x58    ; 'X' ; 88
+|           0x004007e9      c645e660       mov byte [var_1ah], 0x60    ; '`' ; 96
+|           0x004007ed      c645e734       mov byte [var_19h], 0x34    ; '4' ; 52
+|           0x004007f1      c645e874       mov byte [var_18h], 0x74    ; 't' ; 116
+|           0x004007f5      c645e958       mov byte [var_17h], 0x58    ; 'X' ; 88
+|           0x004007f9      c645ea74       mov byte [var_16h], 0x74    ; 't' ; 116
+|           0x004007fd      c645eb7a       mov byte [var_15h], 0x7a    ; 'z' ; 122
+|           0x00400801      bf54094000     mov edi, str.Enter_your_input: ; 0x400954 ; "Enter your input:"
+|           0x00400806      e865fdffff     call sym.imp.puts           ; int puts(const char *s)
+|           0x0040080b      488d45b0       lea rax, qword [var_50h]
+|           0x0040080f      4889c6         mov rsi, rax
+|           0x00400812      bf66094000     mov edi, 0x400966
+|           0x00400817      b800000000     mov eax, 0
+|           0x0040081c      e89ffdffff     call sym.imp.__isoc99_scanf ; int scanf(const char *format)
+|           0x00400821      488d55d0       lea rdx, qword [var_30h]
+|           0x00400825      488d45b0       lea rax, qword [var_50h]
+|           0x00400829      4889d6         mov rsi, rdx
+|           ;-- rip:
+|           0x0040082c b    4889c7         mov rdi, rax
+|           0x0040082f      e8a2feffff     call sym.strcmp             ; int strcmp(const char *s1, const char *s2)
+|           0x00400834      8945ac         mov dword [var_54h], eax
+|           0x00400837      837dac00       cmp dword [var_54h], 0
+|       ,=< 0x0040083b      750c           jne 0x400849
+|       |   0x0040083d      bf69094000     mov edi, str.Good_game      ; 0x400969 ; "Good game"
+|       |   0x00400842      e829fdffff     call sym.imp.puts           ; int puts(const char *s)
+|      ,==< 0x00400847      eb0a           jmp 0x400853
+|      |`-> 0x00400849      bf73094000     mov edi, str.Always_dig_deeper ; 0x400973 ; "Always dig deeper"
+|      |    0x0040084e      e81dfdffff     call sym.imp.puts           ; int puts(const char *s)
+|      |    ; CODE XREF from main @ 0x400847
+|      `--> 0x00400853      b800000000     mov eax, 0
+|           0x00400858      488b4df8       mov rcx, qword [var_8h]
+|           0x0040085c      6448330c2528.  xor rcx, qword fs:[0x28]
+|       ,=< 0x00400865      7405           je 0x40086c
+|       |   0x00400867      e824fdffff     call sym.imp.__stack_chk_fail ; void __stack_chk_fail(void)
+|       `-> 0x0040086c      c9             leave
+\           0x0040086d      c3             ret
+```
+```
+[0x0040082c]> dr
+rax = 0x7fff8020fc20
+rbx = 0x00000000
+rcx = 0x00000000
+rdx = 0x7fff8020fc40
+r8 = 0x00000000
+r9 = 0x00000000
+r10 = 0x00000004
+r11 = 0x00000246
+r12 = 0x004005e0
+r13 = 0x7fff8020fd50
+r14 = 0x00000000
+r15 = 0x00000000
+rsi = 0x7fff8020fc40
+rdi = 0x7fff8020f6c0
+rsp = 0x7fff8020fc00
+rbp = 0x7fff8020fc70
+rip = 0x0040082c
+rflags = 0x00000202
+orax = 0xffffffffffffffff
+[0x0040082c]> px @ 0x7fff8020fc20
+- offset -       0 1  2 3  4 5  6 7  8 9  A B  C D  E F  0123456789ABCDEF
+0x7fff8020fc20  7465 7374 0000 0000 0000 0000 0000 0000  test............
+0x7fff8020fc30  0100 0000 0000 0000 1d09 4000 0000 0000  ..........@.....
+0x7fff8020fc40  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+0x7fff8020fc50  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+0x7fff8020fc60  50fd 2080 ff7f 0000 006f a4a1 c6b6 1a1e  P. ......o......
+0x7fff8020fc70  d008 4000 0000 0000 bb7b c870 447f 0000  ..@......{.pD...
+0x7fff8020fc80  0000 0000 0000 0000 58fd 2080 ff7f 0000  ........X. .....
+0x7fff8020fc90  0000 0000 0200 0000 7307 4000 0000 0000  ........s.@.....
+0x7fff8020fca0  0000 0000 0000 0000 e3f2 9b85 31c3 298e  ............1.).
+0x7fff8020fcb0  e005 4000 0000 0000 50fd 2080 ff7f 0000  ..@.....P. .....
+0x7fff8020fcc0  0000 0000 0000 0000 0000 0000 0000 0000  ................
+0x7fff8020fcd0  e3f2 3b6d f0c3 d671 e3f2 dd62 2122 a170  ..;m...q...b!".p
+0x7fff8020fce0  0000 0000 0000 0000 0000 0000 0000 0000  ................
+0x7fff8020fcf0  0000 0000 0000 0000 0000 0000 0000 0000  ................
+0x7fff8020fd00  9021 e670 447f 0000 b976 e470 447f 0000  .!.pD....v.pD...
+0x7fff8020fd10  0000 0000 0000 0000 0000 0000 0000 0000  ................
+[0x0040082c]> px @ 0x7fff8020fc40
+- offset -       0 1  2 3  4 5  6 7  8 9  A B  C D  E F  0123456789ABCDEF
+0x7fff8020fc40  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+0x7fff8020fc50  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+0x7fff8020fc60  50fd 2080 ff7f 0000 006f a4a1 c6b6 1a1e  P. ......o......
+0x7fff8020fc70  d008 4000 0000 0000 bb7b c870 447f 0000  ..@......{.pD...
+0x7fff8020fc80  0000 0000 0000 0000 58fd 2080 ff7f 0000  ........X. .....
+0x7fff8020fc90  0000 0000 0200 0000 7307 4000 0000 0000  ........s.@.....
+0x7fff8020fca0  0000 0000 0000 0000 e3f2 9b85 31c3 298e  ............1.).
+0x7fff8020fcb0  e005 4000 0000 0000 50fd 2080 ff7f 0000  ..@.....P. .....
+0x7fff8020fcc0  0000 0000 0000 0000 0000 0000 0000 0000  ................
+0x7fff8020fcd0  e3f2 3b6d f0c3 d671 e3f2 dd62 2122 a170  ..;m...q...b!".p
+0x7fff8020fce0  0000 0000 0000 0000 0000 0000 0000 0000  ................
+0x7fff8020fcf0  0000 0000 0000 0000 0000 0000 0000 0000  ................
+0x7fff8020fd00  9021 e670 447f 0000 b976 e470 447f 0000  .!.pD....v.pD...
+0x7fff8020fd10  0000 0000 0000 0000 0000 0000 0000 0000  ................
+0x7fff8020fd20  e005 4000 0000 0000 50fd 2080 ff7f 0000  ..@.....P. .....
+0x7fff8020fd30  0000 0000 0000 0000 0906 4000 0000 0000  ..........@.....
+[0x0040082c]>
+```
