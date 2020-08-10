@@ -400,3 +400,206 @@ orax = 0xffffffffffffffff
 0x7fff8020fd30  0000 0000 0000 0000 0906 4000 0000 0000  ..........@.....
 [0x0040082c]>
 ```
+
+# crackme6
+```
+[0x004006e9]> pdf @sym.my_secure_test
+/ (fcn) sym.my_secure_test 340
+|   sym.my_secure_test (int32_t arg1);
+|           ; var int32_t var_8h @ rbp-0x8
+|           ; arg int32_t arg1 @ rdi
+|           ; CALL XREF from sym.compare_pwd @ 0x4006e4
+|           0x0040057d      55             push rbp
+|           0x0040057e      4889e5         mov rbp, rsp
+|           0x00400581      48897df8       mov qword [var_8h], rdi     ; arg1
+|           0x00400585      488b45f8       mov rax, qword [var_8h]
+|           0x00400589      0fb600         movzx eax, byte [rax]
+|           0x0040058c      84c0           test al, al
+|       ,=< 0x0040058e      740b           je 0x40059b
+|       |   0x00400590      488b45f8       mov rax, qword [var_8h]
+|       |   0x00400594      0fb600         movzx eax, byte [rax]
+|       |   0x00400597      3c31           cmp al, 0x31                ; 49
+|      ,==< 0x00400599      740a           je 0x4005a5
+|      |`-> 0x0040059b      b8ffffffff     mov eax, 0xffffffff         ; rax
+|      |,=< 0x004005a0      e92a010000     jmp 0x4006cf
+|      `--> 0x004005a5      488b45f8       mov rax, qword [var_8h]
+|       |   0x004005a9      4883c001       add rax, 1
+|       |   0x004005ad      0fb600         movzx eax, byte [rax]
+|       |   0x004005b0      84c0           test al, al
+|      ,==< 0x004005b2      740f           je 0x4005c3
+|      ||   0x004005b4      488b45f8       mov rax, qword [var_8h]
+|      ||   0x004005b8      4883c001       add rax, 1
+|      ||   0x004005bc      0fb600         movzx eax, byte [rax]
+|      ||   0x004005bf      3c33           cmp al, 0x33                ; 51
+|     ,===< 0x004005c1      740a           je 0x4005cd
+|     |`--> 0x004005c3      b8ffffffff     mov eax, 0xffffffff         ; rax
+|     |,==< 0x004005c8      e902010000     jmp 0x4006cf
+|     `---> 0x004005cd      488b45f8       mov rax, qword [var_8h]
+|      ||   0x004005d1      4883c002       add rax, 2
+|      ||   0x004005d5      0fb600         movzx eax, byte [rax]
+|      ||   0x004005d8      84c0           test al, al
+|     ,===< 0x004005da      740f           je 0x4005eb
+|     |||   0x004005dc      488b45f8       mov rax, qword [var_8h]
+|     |||   0x004005e0      4883c002       add rax, 2
+|     |||   0x004005e4      0fb600         movzx eax, byte [rax]
+|     |||   0x004005e7      3c33           cmp al, 0x33                ; 51
+|    ,====< 0x004005e9      740a           je 0x4005f5
+|    |`---> 0x004005eb      b8ffffffff     mov eax, 0xffffffff         ; rax
+|    |,===< 0x004005f0      e9da000000     jmp 0x4006cf
+|    `----> 0x004005f5      488b45f8       mov rax, qword [var_8h]
+|     |||   0x004005f9      4883c003       add rax, 3
+|     |||   0x004005fd      0fb600         movzx eax, byte [rax]
+|     |||   0x00400600      84c0           test al, al
+|    ,====< 0x00400602      740f           je 0x400613
+|    ||||   0x00400604      488b45f8       mov rax, qword [var_8h]
+|    ||||   0x00400608      4883c003       add rax, 3
+|    ||||   0x0040060c      0fb600         movzx eax, byte [rax]
+|    ||||   0x0040060f      3c37           cmp al, 0x37                ; 55
+|   ,=====< 0x00400611      740a           je 0x40061d
+|   |`----> 0x00400613      b8ffffffff     mov eax, 0xffffffff         ; rax
+|   |,====< 0x00400618      e9b2000000     jmp 0x4006cf
+|   `-----> 0x0040061d      488b45f8       mov rax, qword [var_8h]
+|    ||||   0x00400621      4883c004       add rax, 4
+|    ||||   0x00400625      0fb600         movzx eax, byte [rax]
+|    ||||   0x00400628      84c0           test al, al
+|   ,=====< 0x0040062a      740f           je 0x40063b
+|   |||||   0x0040062c      488b45f8       mov rax, qword [var_8h]
+|   |||||   0x00400630      4883c004       add rax, 4
+|   |||||   0x00400634      0fb600         movzx eax, byte [rax]
+|   |||||   0x00400637      3c5f           cmp al, 0x5f                ; 95
+|  ,======< 0x00400639      740a           je 0x400645
+|  |`-----> 0x0040063b      b8ffffffff     mov eax, 0xffffffff         ; rax
+|  |,=====< 0x00400640      e98a000000     jmp 0x4006cf
+|  `------> 0x00400645      488b45f8       mov rax, qword [var_8h]
+|   |||||   0x00400649      4883c005       add rax, 5
+|   |||||   0x0040064d      0fb600         movzx eax, byte [rax]
+|   |||||   0x00400650      84c0           test al, al
+|  ,======< 0x00400652      740f           je 0x400663
+|  ||||||   0x00400654      488b45f8       mov rax, qword [var_8h]
+|  ||||||   0x00400658      4883c005       add rax, 5
+|  ||||||   0x0040065c      0fb600         movzx eax, byte [rax]
+|  ||||||   0x0040065f      3c70           cmp al, 0x70                ; 112
+| ,=======< 0x00400661      7407           je 0x40066a
+| |`------> 0x00400663      b8ffffffff     mov eax, 0xffffffff         ; rax
+| |,======< 0x00400668      eb65           jmp 0x4006cf
+| `-------> 0x0040066a      488b45f8       mov rax, qword [var_8h]
+|  ||||||   0x0040066e      4883c006       add rax, 6
+|  ||||||   0x00400672      0fb600         movzx eax, byte [rax]
+|  ||||||   0x00400675      84c0           test al, al
+| ,=======< 0x00400677      740f           je 0x400688
+| |||||||   0x00400679      488b45f8       mov rax, qword [var_8h]
+| |||||||   0x0040067d      4883c006       add rax, 6
+| |||||||   0x00400681      0fb600         movzx eax, byte [rax]
+| |||||||   0x00400684      3c77           cmp al, 0x77                ; 119
+| ========< 0x00400686      7407           je 0x40068f
+| `-------> 0x00400688      b8ffffffff     mov eax, 0xffffffff         ; rax
+| ,=======< 0x0040068d      eb40           jmp 0x4006cf
+| --------> 0x0040068f      488b45f8       mov rax, qword [var_8h]
+| |||||||   0x00400693      4883c007       add rax, 7
+| |||||||   0x00400697      0fb600         movzx eax, byte [rax]
+| |||||||   0x0040069a      84c0           test al, al
+| ========< 0x0040069c      740f           je 0x4006ad
+| |||||||   0x0040069e      488b45f8       mov rax, qword [var_8h]
+| |||||||   0x004006a2      4883c007       add rax, 7
+| |||||||   0x004006a6      0fb600         movzx eax, byte [rax]
+| |||||||   0x004006a9      3c64           cmp al, 0x64                ; 100
+| ========< 0x004006ab      7407           je 0x4006b4
+| --------> 0x004006ad      b8ffffffff     mov eax, 0xffffffff         ; rax
+| ========< 0x004006b2      eb1b           jmp 0x4006cf
+| --------> 0x004006b4      488b45f8       mov rax, qword [var_8h]
+| |||||||   0x004006b8      4883c008       add rax, 8
+| |||||||   0x004006bc      0fb600         movzx eax, byte [rax]
+| |||||||   0x004006bf      84c0           test al, al
+| ========< 0x004006c1      7407           je 0x4006ca
+| |||||||   0x004006c3      b8ffffffff     mov eax, 0xffffffff         ; rax
+| ========< 0x004006c8      eb05           jmp 0x4006cf
+| --------> 0x004006ca      b800000000     mov eax, 0
+| |||||||   ; XREFS: CODE 0x004005a0  CODE 0x004005c8  CODE 0x004005f0  CODE 0x00400618  CODE 0x00400640
+| |||||||   ; XREFS: CODE 0x00400668  CODE 0x0040068d  CODE 0x004006b2  CODE 0x004006c8
+| ```````-> 0x004006cf      5d             pop rbp
+\           0x004006d0      c3             ret
+````
+
+```
+31 33 33 37 5f 70 77 64
+```
+
+# crackme7
+
+```
+| |||| |    0x08048665      3d697a0000     cmp eax, 0x7a69
+| |||| |,=< 0x0804866a      7517           jne 0x8048683
+| |||| ||   0x0804866c      83ec0c         sub esp, 0xc
+| |||| ||   0x0804866f      68bc880408     push str.Wow_such_h4x0r     ; 0x80488bc ; "Wow such h4x0r!"
+| |||| ||   0x08048674      e8f7fcffff     call sym.imp.puts           ; int puts(const char *s)
+| |||| ||   0x08048679      83c410         add esp, 0x10
+```
+
+```
+root@kali:~# ./crackme7
+Menu:
+
+[1] Say hello
+[2] Add numbers
+[3] Quit
+
+[>] 31337
+Wow such h4x0r!
+XXXXXXXXXXXXXXXXXXXXXX
+```
+
+
+# crackme8
+```
+|           0x0804849b      8d4c2404       lea ecx, dword [arg_4h]
+|           0x0804849f      83e4f0         and esp, 0xfffffff0
+|           0x080484a2      ff71fc         push dword [ecx - 4]
+|           0x080484a5      55             push ebp
+|           0x080484a6      89e5           mov ebp, esp
+|           0x080484a8      51             push ecx
+|           0x080484a9      83ec04         sub esp, 4
+|           0x080484ac      89c8           mov eax, ecx
+|           0x080484ae      833802         cmp dword [eax], 2
+|       ,=< 0x080484b1      741d           je 0x80484d0
+|       |   0x080484b3      8b4004         mov eax, dword [eax + 4]
+|       |   0x080484b6      8b00           mov eax, dword [eax]
+|       |   0x080484b8      83ec08         sub esp, 8
+|       |   0x080484bb      50             push eax
+|       |   0x080484bc      6860860408     push str.Usage:__s_password ; 0x8048660 ; "Usage: %s password\n"
+|       |   0x080484c1      e87afeffff     call sym.imp.printf         ; int printf(const char *format)
+|       |   0x080484c6      83c410         add esp, 0x10
+|       |   0x080484c9      b801000000     mov eax, 1
+|      ,==< 0x080484ce      eb4c           jmp 0x804851c
+|      |`-> 0x080484d0      8b4004         mov eax, dword [eax + 4]
+|      |    0x080484d3      83c004         add eax, 4
+|      |    0x080484d6      8b00           mov eax, dword [eax]
+|      |    0x080484d8      83ec0c         sub esp, 0xc
+|      |    0x080484db      50             push eax
+|      |    0x080484dc      e89ffeffff     call sym.imp.atoi           ; int atoi(const char *str)
+|      |    0x080484e1      83c410         add esp, 0x10
+|      |    0x080484e4      3d0df0feca     cmp eax, 0xcafef00d
+|      |,=< 0x080484e9      7417           je 0x8048502
+|      ||   0x080484eb      83ec0c         sub esp, 0xc
+|      ||   0x080484ee      6874860408     push str.Access_denied.     ; 0x8048674 ; "Access denied."
+|      ||   0x080484f3      e858feffff     call sym.imp.puts           ; int puts(const char *s)
+|      ||   0x080484f8      83c410         add esp, 0x10
+|      ||   0x080484fb      b801000000     mov eax, 1
+|     ,===< 0x08048500      eb1a           jmp 0x804851c
+|     ||`-> 0x08048502      83ec0c         sub esp, 0xc
+|     ||    0x08048505      6883860408     push str.Access_granted.    ; 0x8048683 ; "Access granted."
+|     ||    0x0804850a      e841feffff     call sym.imp.puts           ; int puts(const char *s)
+|     ||    0x0804850f      83c410         add esp, 0x10
+|     ||    0x08048512      e80d000000     call sym.giveFlag
+```
+
+```
+cafef00d
+1100 1010 1111 1110 1111 0000 0000 1101
+0011 0101 0000 0001 0000 1111 1111 0011
+-xxxxxx
+```
+```
+root@kali:~# ./crackme8 -XXXXXXXXX
+Access granted.
+XXXXXXXXXXXXXXXXXXXX
+```
