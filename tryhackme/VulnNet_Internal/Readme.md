@@ -1,4 +1,4 @@
-# CoVulnNet: Internaluch
+# VulnNet: Internal
 - vulnNetシリーズ
 - https://tryhackme.com/room/vulnnetinternal
 
